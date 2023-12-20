@@ -1,0 +1,24 @@
+<div class="todos-container">
+    <h3>Todo List</h3>
+    <hr>
+    <div *ngIf="!isEdit; else updateTodoTemplate">
+        <input placeholder="Enter todo.." type="text" [value]="todoTitle" (input)="onChangeTodo($event)">
+        <button (click)="!isEdit? addTodo() : updateTodo()">{{!isEdit? "+ Add": "Save"}}</button>
+    </div>
+
+    <ng-template  #updateTodoTemplate>
+        <input placeholder="Enter todo.." type="text" [value]="todoTitle" (input)="onChangeTodo($event)">
+        <button (click)="updateTodo()">Save</button>
+    </ng-template>
+
+    <div *ngIf="Todo.length > 0; else noTodos">
+        <div class="todo-list" *ngFor="let todo of Todo">
+            <app-todo-item [todoItem]="todo" (deleteTodo)="deleteTodoItem($event)"
+                (isCompletedTodo)="isCompletedTodoItem($event)" (editTodo)="editTodo($event)"></app-todo-item>
+        </div>
+    </div>
+
+    <ng-template #noTodos>
+        <p [ngStyle]="{ 'margin': '10%' }">No todos available</p>
+    </ng-template>
+</div>

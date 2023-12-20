@@ -1,0 +1,8 @@
+<div class="todo-item-container">
+    <p [ngStyle]="{ 'text-decoration': todoItem.isCompleted ? 'line-through' :  ''}" >{{todoItem?.todoTitle }}</p>
+    <div class="btn">
+        <button (click)="handleEditTodo()">Edit</button>
+        <button (click)="deleteTodoItem()">Delete</button>
+        <button (click)="handleIsCompleted()" >IsCompleted</button>
+    </div>
+</div>

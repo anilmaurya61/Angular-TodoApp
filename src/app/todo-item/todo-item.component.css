@@ -1,0 +1,18 @@
+.todo-item-container{
+    width: 80%;
+    margin: 0 auto;
+    background-color: rgb(205,212,218);
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 10px;
+}
+.btn{
+    display: flex;
+    gap: 5px;
+}
+.btn button{
+    height: 2rem;
+    padding: 5px 10px;
+}
