@@ -15,18 +15,23 @@ export class TodoComponent {
     todoTitle: string = "";
     item:any = {};
     isEdit : boolean = false;
-    id = 1;
-    
+    id:number = 1;
+    error:boolean = false;
      
      
     public addTodo() {
-        this.Todo.push({
-            "id": this.id++,
-            "todoTitle": this.todoTitle,
-            "isCompleted": false,
-        });
-        this.todoTitle = "";
-        console.log(this.Todo)
+        if(this.todoTitle.trim() !=''){
+            this.Todo.push({
+                "id": this.id++,
+                "todoTitle": this.todoTitle,
+                "isCompleted": false,
+            });
+            this.todoTitle = "";
+            console.log(this.Todo)
+        }
+        else{
+            this.error = true
+        }
     }
     public updateTodo(){
         console.log("save")
@@ -45,6 +50,7 @@ export class TodoComponent {
     }
 
     public onChangeTodo(event: any) {
+        this.error = false;
         this.todoTitle = event.target.value;
     }
 

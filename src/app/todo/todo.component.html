@@ -2,7 +2,8 @@
     <h3>Todo List</h3>
     <hr>
     <div *ngIf="!isEdit; else updateTodoTemplate">
-        <input placeholder="Enter todo.." type="text" [value]="todoTitle" (input)="onChangeTodo($event)">
+        <input error placeholder="Enter todo.." type="text" [value]="todoTitle" (input)="onChangeTodo($event)">
+        <p *ngIf="error;" [ngStyle]="{'color':'red', 'margin-left':'10%'}">Please Enter Todo..</p>
         <button (click)="!isEdit? addTodo() : updateTodo()">{{!isEdit? "+ Add": "Save"}}</button>
     </div>
 
