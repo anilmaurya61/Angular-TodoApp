@@ -15,15 +15,13 @@ export class TodoComponent {
     todoTitle: string = "";
     item:any = {};
     isEdit : boolean = false;
-
-    public getUniqueId(){
-        return (new Date().getTime()).toString(36) + new Date().getUTCMilliseconds();
-     }
+    id = 1;
+    
      
      
     public addTodo() {
         this.Todo.push({
-            "id": this.getUniqueId(),
+            "id": this.id++,
             "todoTitle": this.todoTitle,
             "isCompleted": false,
         });
@@ -55,9 +53,8 @@ export class TodoComponent {
     }
 
     public isCompletedTodoItem(event:any) {
-        console.log(event)
         this.Todo.map((item)=>{
-            if(item.id = event.id){
+            if(item.id === event.id){
                 item.isCompleted = !item.isCompleted;
             }
         })
