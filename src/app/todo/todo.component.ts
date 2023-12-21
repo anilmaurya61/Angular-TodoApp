@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { TodoItemComponent } from "../todo-item/todo-item.component";
 import { CommonModule } from '@angular/common';
-import uniqid from 'uniqid';
 
 @Component({
     selector: 'app-todo',
@@ -17,9 +16,14 @@ export class TodoComponent {
     item:any = {};
     isEdit : boolean = false;
 
+    public getUniqueId(){
+        return (new Date().getTime()).toString(36) + new Date().getUTCMilliseconds();
+     }
+     
+     
     public addTodo() {
         this.Todo.push({
-            "id": uniqid(),
+            "id": this.getUniqueId(),
             "todoTitle": this.todoTitle,
             "isCompleted": false,
         });
