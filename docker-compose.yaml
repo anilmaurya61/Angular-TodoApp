@@ -1,13 +1,9 @@
 version: '3.8'
 
 services:
-  web:
+  todo-app:
     build:
       context: .
-      target: builder
+      dockerfile: Dockerfile
     ports:
       - "8080:80"
-    volumes:
-      - ./src:/app/src        
-      - ./angular:/app        
-      - /app/node_modules 
